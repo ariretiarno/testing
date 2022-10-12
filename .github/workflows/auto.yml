@@ -16,4 +16,4 @@ jobs:
       with:
         comment: Auto-closing pull request
         delete-branch: true
-        pull-request-number: 10
+        pull-request-number: 2
