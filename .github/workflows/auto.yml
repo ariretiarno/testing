@@ -10,7 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Close Pull
+      env:
+        token: ${{ secrets.TOKEN }}
       uses: peter-evans/close-pull@v2
       with:
         comment: Auto-closing pull request
         delete-branch: true
+        pull-request-number: 1
