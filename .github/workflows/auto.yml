@@ -12,8 +12,7 @@ jobs:
     - name: Close Pull
       env:
         token: ${{ secrets.TOKEN }}
-      uses: peter-evans/close-pull@v2
+      uses: superbrothers/close-pull-request@v3
       with:
-        comment: Auto-closing pull request
-        delete-branch: true
-        pull-request-number: 2
+        # Optional. Post a issue comment just before closing a pull request.
+        comment: "We do not accept PRs. If you have any questions, please feel free to contact us."
