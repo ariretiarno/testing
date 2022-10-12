@@ -2,7 +2,7 @@ name: Close Pull Request
 
 on:
   schedule:
-  - cron: '9 06 * * *'
+  - cron: '12 6 * * *'
 
 jobs:
   run:
