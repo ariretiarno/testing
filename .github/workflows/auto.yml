@@ -1,9 +1,9 @@
 name: Close Pull Request
 
-on:
-  schedule:
-  - cron: '43 6 * * *'
-#on: workflow_dispatch
+#on:
+#  schedule:
+#  - cron: '43 6 * * *'
+on: workflow_dispatch
 
 jobs:
   run:
