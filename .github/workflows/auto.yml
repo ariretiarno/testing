@@ -3,20 +3,20 @@ name: Close Pull Request
 #on:
 #  schedule:
 #  - cron: '43 6 * * *'
-#on: workflow_dispatch
+on: workflow_dispatch
 
-on:
-  pull_request_target:
-    types: [opened]
-    
+#on:
+#  pull_request_target:
+#    types: [opened]
+
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
     - name: Close Pull
       env:
-        token: ${{ secrets.TOKEN }}
-      uses: superbrothers/close-pull-request@v3
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      uses: crondaemon/close-pr@v1
       with:
         # Optional. Post a issue comment just before closing a pull request.
         comment: "We do not accept PRs. If you have any questions, please feel free to contact us."
