@@ -9,7 +9,8 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-    - uses: superbrothers/close-pull-request@v3
+    - name: Close Pull
+      uses: peter-evans/close-pull@v2
       with:
-        # Optional. Post a issue comment just before closing a pull request.
-        comment: "This PR will be closed after end of the day not merged"
+        comment: Auto-closing pull request
+        delete-branch: true
