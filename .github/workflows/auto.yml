@@ -14,6 +14,6 @@ jobs:
           token: ${{ secrets.TOKEN }}
           base: 'master'
           required_approval_count: 1
-          require_passed_checks: false
+          require_passed_checks: true
           sort: 'created'
           direction: 'desc'
