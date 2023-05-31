@@ -1,19 +1,17 @@
-name: PR update
-
+name: autoupdate
 on:
+  # This will trigger on all pushes to all branches.
+  #push: {}
+  # Alternatively, you can only trigger if commits are pushed to certain branches, e.g.:
   push:
     branches:
-      - 'master'
+      - master
+  #     - unstable
 jobs:
   autoupdate:
-    runs-on: ubuntu-latest
+    name: autoupdate
+    runs-on: ubuntu-22.04
     steps:
-      - name: Automatically update PR
-        uses: adRise/update-pr-branch@v0.6.0
-        with:
-          token: ${{ secrets.TOKEN }}
-          base: 'master'
-          required_approval_count: 1
-          require_passed_checks: false
-          sort: 'created'
-          direction: 'desc'
+      - uses: docker://chinthakagodawita/autoupdate-action:v1
+        env:
+          GITHUB_TOKEN: '${{ secrets.TOKEN }}'
