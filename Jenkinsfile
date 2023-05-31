@@ -5,7 +5,6 @@ podTemplate(
         if (env.BRANCH_NAME =~ 'PR-.*') {
             stage('Checkout') {
                 def scmVars = checkout scm
-                listFiles = sh(returnStdout: true, script: "git diff --diff-filter=d --name-only origin/master").split("\n")
             }
 
             stage ('Validate SQL') {
