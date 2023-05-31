@@ -1,22 +1,19 @@
-name: Close Pull Request
+name: PR update
 
-#on:
-#  schedule:
-#  - cron: '43 6 * * *'
-on: workflow_dispatch
-
-#on:
-#  pull_request_target:
-#    types: [opened]
-
+on:
+  push:
+    branches:
+      - 'master'
 jobs:
-  run:
+  autoupdate:
     runs-on: ubuntu-latest
     steps:
-    - name: Close Pull
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      uses: crondaemon/close-pr@v1
-      with:
-        # Optional. Post a issue comment just before closing a pull request.
-        comment: "We do not accept PRs. If you have any questions, please feel free to contact us."
+      - name: Automatically update PR
+        uses: adRise/update-pr-branch@VERSION_YOU_WANT_TO_USE
+        with:
+          token: ${{ secrets.TOKEN }}
+          base: 'master'
+          required_approval_count: 1
+          require_passed_checks: false
+          sort: 'created'
+          direction: 'desc'
