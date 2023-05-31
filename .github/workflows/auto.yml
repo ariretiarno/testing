@@ -1,22 +1,17 @@
-name: Close Pull Request
-
-#on:
-#  schedule:
-#  - cron: '43 6 * * *'
-#on: workflow_dispatch
-
+name: autoupdate
 on:
-  pull_request_target:
-    types: [opened]
-    
+  # This will trigger on all pushes to all branches.
+  #push: {}
+  # Alternatively, you can only trigger if commits are pushed to certain branches, e.g.:
+  push:
+    branches:
+      - master
+  #     - unstable
 jobs:
-  run:
-    runs-on: ubuntu-latest
+  autoupdate:
+    name: autoupdate
+    runs-on: ubuntu-22.04
     steps:
-    - name: Close Pull
-      env:
-        token: ${{ secrets.TOKEN }}
-      uses: superbrothers/close-pull-request@v3
-      with:
-        # Optional. Post a issue comment just before closing a pull request.
-        comment: "We do not accept PRs. If you have any questions, please feel free to contact us."
+      - uses: docker://chinthakagodawita/autoupdate-action:v1
+        env:
+          GITHUB_TOKEN: '${{ secrets.TOKEN }}'
