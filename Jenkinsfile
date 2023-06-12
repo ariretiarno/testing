@@ -12,6 +12,10 @@ podTemplate(
                 script {
                     sh "echo PASSED"
                 }
+
+                if (currentBuild.currentResult != 'SUCCESS') {
+                    notify("slack", "${currentBuild.currentResult}", "${message}", "${appFullName}", "#jenkins-build")
+                }
             }
         }
     }
