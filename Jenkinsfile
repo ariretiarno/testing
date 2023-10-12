@@ -18,7 +18,7 @@ podTemplate(
                 }
             }
         }
-        if (env.BRANCH_NAME =~ '/\d+\.(?:\d+|x)(?:\.\d+|x)?/') {
+        if (env.BRANCH_NAME =~ /\d+\.(?:\d+|x)(?:\.\d+|x)?/) {
             stage('Checkout') {
                 def scmVars = checkout scm
                 listFiles = sh(returnStdout: true, script: "git diff --diff-filter=d --name-only origin/master").split("\n")
